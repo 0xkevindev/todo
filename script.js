@@ -1,71 +1,122 @@
-const firstCheckbox = document.getElementById("firstCheckbox");
-const firstInput = document.getElementById("firstInput");
-const firstForm = document.getElementById("firstForm");
-const secondCheckbox = document.getElementById("secondCheckbox");
-const secondInput = document.getElementById("secondInput");
-const secondForm = document.getElementById("secondForm");
-const thirdCheckbox = document.getElementById("thirdCheckbox");
-const thirdInput = document.getElementById("thirdInput");
-const thirdForm = document.getElementById("thirdForm");
-const fourthCheckbox = document.getElementById("fourthCheckbox");
-const fourthInput = document.getElementById("fourthInput");
-const fourthForm = document.getElementById("fourthForm");
-const mode = document.getElementById("mode");
+window.addEventListener("load", () => {
+  const savedFirstValue = localStorage.getItem("goalOne");
+  const savedSecondValue = localStorage.getItem("goalTwo");
+  const savedThirdValue = localStorage.getItem("goalThree");
+  const savedFourthValue = localStorage.getItem("goalFour");
 
-document.body.style.backgroundColor = "black";
-document.body.style.color = "white";
-
-let darkMode = 0;
-mode.addEventListener("click", () => {
-  if (darkMode === 0) {
-    document.body.style.backgroundColor = "white";
-    document.body.style.color = "black";
-    mode.innerHTML = "Dark";
-    darkMode = 1;
-  } else {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-    mode.innerHTML = "Light";
-    darkMode = 0;
+  if (savedFirstValue) {
+    firstInput.value = savedFirstValue;
   }
-});
+  if (savedSecondValue) {
+    secondInput.value = savedSecondValue;
+  }
+  if (savedThirdValue) {
+    thirdInput.value = savedThirdValue;
+  }
+  if (savedFourthValue) {
+    fourthInput.value = savedFourthValue;
+  }
+  
+  document.body.style.backgroundColor = "black";
+  document.body.style.color = "white";
+  let darkMode = 0;
+  mode.addEventListener("click", () => {
+    if (darkMode === 0) {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      mode.innerHTML = "Dark";
+      darkMode = 1;
+    } else {
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+      mode.innerHTML = "Light";
+      darkMode = 0;
+    }
+  });
 
-firstCheckbox.addEventListener("click", (event) => {
-  const firstValue = firstInput.value;
-  if (firstCheckbox.checked) {
+  const savedFirstCheckbox = localStorage.getItem("goalOneChecked");
+  const savedSecondCheckbox = localStorage.getItem("goalTwoChecked");
+  const savedThirdCheckbox = localStorage.getItem("goalThreeChecked");
+  const savedFourthCheckbox = localStorage.getItem("goalFourChecked");
+
+  if (savedFirstCheckbox === "true") {
+    firstCheckbox.checked = true;
     firstInput.style.textDecoration = "line-through";
   } else {
+    firstCheckbox.checked = false;
     firstInput.style.textDecoration = "none";
   }
-  console.log(firstValue);
-});
 
-secondCheckbox.addEventListener("click", (event) => {
-  const secondValue = secondInput.value;
-  if (secondCheckbox.checked) {
+  if (savedSecondCheckbox === "true") {
+    secondCheckbox.checked = true;
     secondInput.style.textDecoration = "line-through";
   } else {
+    secondCheckbox.checked = false;
     secondInput.style.textDecoration = "none";
   }
-  console.log(secondValue);
-});
 
-thirdCheckbox.addEventListener("click", (event) => {
-  const thirdValue = thirdInput.value;
-  if (thirdCheckbox.checked) {
+  if (savedThirdCheckbox === "true") {
+    thirdCheckbox.checked = true;
     thirdInput.style.textDecoration = "line-through";
   } else {
+    thirdCheckbox.checked = false;
     thirdInput.style.textDecoration = "none";
   }
-  console.log(thirdValue);
-});
 
-fourthCheckbox.addEventListener("click", (event) => {
-  const fourthValue = fourthInput.value;
-  if (fourthCheckbox.checked) {
+  if (savedFourthCheckbox === "true") {
+    fourthCheckbox.checked = true;
     fourthInput.style.textDecoration = "line-through";
   } else {
+    fourthCheckbox.checked = false;
     fourthInput.style.textDecoration = "none";
   }
-  console.log(fourthValue);
+});
+
+firstCheckbox.addEventListener("click", () => {
+  const firstValue = firstInput.value;
+  localStorage.setItem("goalOne", firstValue);
+  localStorage.setItem("goalOneChecked", firstCheckbox.checked);
+  firstInput.style.textDecoration = firstCheckbox.checked
+    ? "line-through"
+    : "none";
+});
+
+secondCheckbox.addEventListener("click", () => {
+  const secondValue = secondInput.value;
+  localStorage.setItem("goalTwo", secondValue);
+  localStorage.setItem("goalTwoChecked", secondCheckbox.checked);
+  secondInput.style.textDecoration = secondCheckbox.checked
+    ? "line-through"
+    : "none";
+});
+
+thirdCheckbox.addEventListener("click", () => {
+  const thirdValue = thirdInput.value;
+  localStorage.setItem("goalThree", thirdValue);
+  localStorage.setItem("goalThreeChecked", thirdCheckbox.checked);
+  thirdInput.style.textDecoration = thirdCheckbox.checked
+    ? "line-through"
+    : "none";
+});
+
+fourthCheckbox.addEventListener("click", () => {
+  const fourthValue = fourthInput.value;
+  localStorage.setItem("goalFour", fourthValue);
+  localStorage.setItem("goalFourChecked", fourthCheckbox.checked);
+  fourthInput.style.textDecoration = fourthCheckbox.checked
+    ? "line-through"
+    : "none";
+});
+
+firstInput.addEventListener("input", () => {
+  localStorage.setItem("goalOne", firstInput.value);
+});
+secondInput.addEventListener("input", () => {
+  localStorage.setItem("goalTwo", secondInput.value);
+});
+thirdInput.addEventListener("input", () => {
+  localStorage.setItem("goalThree", thirdInput.value);
+});
+fourthInput.addEventListener("input", () => {
+  localStorage.setItem("goalFour", fourthInput.value);
 });
