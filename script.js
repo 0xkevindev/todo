@@ -1,122 +1,147 @@
-window.addEventListener("load", () => {
-  const savedFirstValue = localStorage.getItem("goalOne");
-  const savedSecondValue = localStorage.getItem("goalTwo");
-  const savedThirdValue = localStorage.getItem("goalThree");
-  const savedFourthValue = localStorage.getItem("goalFour");
+const button = document.getElementById('button')
+const body = document.body
+let darkMode = 0
 
-  if (savedFirstValue) {
-    firstInput.value = savedFirstValue;
+button.addEventListener('click',()=>{
+  if(darkMode === 0) {
+    body.style.backgroundColor = "black"
+    body.style.color="white"
+    button.innerHTML="Light"
+    const localstorageMode = 'DARKMODE'
+    localStorage.setItem('mode','DARKMODE')
+    darkMode = 1
   }
-  if (savedSecondValue) {
-    secondInput.value = savedSecondValue;
+  else {
+    body.style.backgroundColor="white"
+    body.style.color="black"
+    button.innerHTML="Dark"
+    const localstorageMode = 'LIGHTMODE'
+    localStorage.setItem('mode','LIGHTMODE')
+    darkMode = 0
   }
-  if (savedThirdValue) {
-    thirdInput.value = savedThirdValue;
+})
+
+window.addEventListener('load',()=>{
+  const mode = localStorage.getItem('mode')
+  if (mode === 'DARKMODE'){
+    body.style.backgroundColor="black"
+    body.style.color="white"
+    button.innerHTML="Light"
   }
-  if (savedFourthValue) {
-    fourthInput.value = savedFourthValue;
+  else if(mode === 'LIGHTMODE') {
+    body.style.backgroundColor="white"
+    body.style.color="black"
+    button.innerHTML="Dark"
   }
-  
-  document.body.style.backgroundColor = "black";
-  document.body.style.color = "white";
-  let darkMode = 0;
-  mode.addEventListener("click", () => {
-    if (darkMode === 0) {
-      document.body.style.backgroundColor = "white";
-      document.body.style.color = "black";
-      mode.innerHTML = "Dark";
-      darkMode = 1;
-    } else {
-      document.body.style.backgroundColor = "black";
-      document.body.style.color = "white";
-      mode.innerHTML = "Light";
-      darkMode = 0;
-    }
-  });
+})
 
-  const savedFirstCheckbox = localStorage.getItem("goalOneChecked");
-  const savedSecondCheckbox = localStorage.getItem("goalTwoChecked");
-  const savedThirdCheckbox = localStorage.getItem("goalThreeChecked");
-  const savedFourthCheckbox = localStorage.getItem("goalFourChecked");
+const firstCheckbox = document.getElementById('firstCheckbox')
+const firstInput = document.getElementById('firstInput')
+const secondCheckbox = document.getElementById('secondCheckbox')
+const secondInput = document.getElementById('secondInput')
+const thirdCheckbox = document.getElementById('thirdCheckbox')
+const thirdInput = document.getElementById('thirdInput')
+const fourthCheckbox = document.getElementById('fourthCheckbox')
+const fourthInput = document.getElementById('fourthInput')
 
-  if (savedFirstCheckbox === "true") {
-    firstCheckbox.checked = true;
-    firstInput.style.textDecoration = "line-through";
-  } else {
-    firstCheckbox.checked = false;
-    firstInput.style.textDecoration = "none";
+firstCheckbox.addEventListener('click',(event)=> {
+  if(event.target.checked) {
+    firstInput.style.textDecoration="line-through";
+    localStorage.setItem("firstCheckbox",'line')
+  } else { firstInput.style.textDecoration="none"
+   localStorage.setItem('firstCheckbox','none')}
+})
+
+secondCheckbox.addEventListener('click',(event)=> {
+  if(event.target.checked) {
+    secondInput.style.textDecoration="line-through";
+    localStorage.setItem("secondCheckbox",'line')
+  } else { secondInput.style.textDecoration="none"
+   localStorage.setItem('secondCheckbox','none')}
+})
+
+thirdCheckbox.addEventListener('click',(event)=> {
+  if(event.target.checked) {
+    thirdInput.style.textDecoration="line-through";
+    localStorage.setItem("thirdCheckbox",'line')
+  } else { thirdInput.style.textDecoration="none"
+   localStorage.setItem('thirdCheckbox','none')}
+})
+
+fourthCheckbox.addEventListener('click',(event)=> {
+  if(event.target.checked) {
+    fourthInput.style.textDecoration="line-through";
+    localStorage.setItem("fourthCheckbox",'line')
+  } else { fourthInput.style.textDecoration="none"
+   localStorage.setItem('fourthCheckbox','none')}
+})
+
+window.addEventListener('load',()=>{
+  const firstboxreload = localStorage.getItem('firstCheckbox')
+  const secondboxreload = localStorage.getItem('secondCheckbox')
+  const thirdboxreload = localStorage.getItem('thirdCheckbox')
+  const fourthboxreload = localStorage.getItem('fourthCheckbox')
+  if(firstboxreload === 'line') {
+    firstInput.style.textDecoration="line-through"
+    firstCheckbox.checked = true
+  }
+  else if (firstboxreload === 'none') {
+    firstInput.style.textDecoration="none"
+    firstCheckbox.checked = false
   }
 
-  if (savedSecondCheckbox === "true") {
-    secondCheckbox.checked = true;
-    secondInput.style.textDecoration = "line-through";
-  } else {
-    secondCheckbox.checked = false;
-    secondInput.style.textDecoration = "none";
+const firstlocalStorageValue = localStorage.getItem('firstInput')
+  firstInput.value=firstlocalStorageValue
+  if(secondboxreload === 'line') {
+    secondInput.style.textDecoration="line-through"
+    secondCheckbox.checked = true
+  }
+  else if (secondboxreload === 'none') {
+    secondInput.style.textDecoration="none"
+    secondCheckbox.checked = false
   }
 
-  if (savedThirdCheckbox === "true") {
-    thirdCheckbox.checked = true;
-    thirdInput.style.textDecoration = "line-through";
-  } else {
-    thirdCheckbox.checked = false;
-    thirdInput.style.textDecoration = "none";
+const secondlocalStorageValue = localStorage.getItem('secondInput')
+  secondInput.value=secondlocalStorageValue
+  if(thirdboxreload === 'line') {
+    thirdInput.style.textDecoration="line-through"
+    thirdCheckbox.checked = true
+  }
+  else if (thirdboxreload === 'none') {
+    thirdInput.style.textDecoration="none"
+    thirdCheckbox.checked = false
   }
 
-  if (savedFourthCheckbox === "true") {
-    fourthCheckbox.checked = true;
-    fourthInput.style.textDecoration = "line-through";
-  } else {
-    fourthCheckbox.checked = false;
-    fourthInput.style.textDecoration = "none";
+const thirdlocalStorageValue = localStorage.getItem('thirdInput')
+  thirdInput.value=thirdlocalStorageValue
+  if(fourthboxreload === 'line') {
+    fourthInput.style.textDecoration="line-through"
+    fourthCheckbox.checked = true
   }
-});
+  else if (fourthboxreload === 'none') {
+    fourthInput.style.textDecoration="none"
+    fourthCheckbox.checked = false
+  }
 
-firstCheckbox.addEventListener("click", () => {
-  const firstValue = firstInput.value;
-  localStorage.setItem("goalOne", firstValue);
-  localStorage.setItem("goalOneChecked", firstCheckbox.checked);
-  firstInput.style.textDecoration = firstCheckbox.checked
-    ? "line-through"
-    : "none";
-});
+const fourthlocalStorageValue = localStorage.getItem('fourthInput')
+  fourthInput.value=fourthlocalStorageValue
+})
+firstInput.addEventListener('input',()=>{
+  localStorage.setItem('firstInput',firstInput.value)
+  console.log(firstInput.value);
+})
 
-secondCheckbox.addEventListener("click", () => {
-  const secondValue = secondInput.value;
-  localStorage.setItem("goalTwo", secondValue);
-  localStorage.setItem("goalTwoChecked", secondCheckbox.checked);
-  secondInput.style.textDecoration = secondCheckbox.checked
-    ? "line-through"
-    : "none";
-});
+secondInput.addEventListener('input',()=>{
+  localStorage.setItem('secondInput',secondInput.value)
+  console.log(secondInput.value);
+})
 
-thirdCheckbox.addEventListener("click", () => {
-  const thirdValue = thirdInput.value;
-  localStorage.setItem("goalThree", thirdValue);
-  localStorage.setItem("goalThreeChecked", thirdCheckbox.checked);
-  thirdInput.style.textDecoration = thirdCheckbox.checked
-    ? "line-through"
-    : "none";
-});
+thirdInput.addEventListener('input',()=>{
+  localStorage.setItem('thirdInput',thirdInput.value)
+  console.log(thirdInput.value);
+})
 
-fourthCheckbox.addEventListener("click", () => {
-  const fourthValue = fourthInput.value;
-  localStorage.setItem("goalFour", fourthValue);
-  localStorage.setItem("goalFourChecked", fourthCheckbox.checked);
-  fourthInput.style.textDecoration = fourthCheckbox.checked
-    ? "line-through"
-    : "none";
-});
-
-firstInput.addEventListener("input", () => {
-  localStorage.setItem("goalOne", firstInput.value);
-});
-secondInput.addEventListener("input", () => {
-  localStorage.setItem("goalTwo", secondInput.value);
-});
-thirdInput.addEventListener("input", () => {
-  localStorage.setItem("goalThree", thirdInput.value);
-});
-fourthInput.addEventListener("input", () => {
-  localStorage.setItem("goalFour", fourthInput.value);
-});
+fourthInput.addEventListener('input',()=>{
+  localStorage.setItem('fourthInput',fourthInput.value)
+  console.log(fourthInput.value);
+})
