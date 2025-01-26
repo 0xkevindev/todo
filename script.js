@@ -89,7 +89,7 @@ window.addEventListener('load',()=>{
     firstInput.style.textDecoration="none"
     firstCheckbox.checked = false
   }
-
+  
 const firstlocalStorageValue = localStorage.getItem('firstInput')
   firstInput.value=firstlocalStorageValue
   if(secondboxreload === 'line') {
@@ -128,20 +128,16 @@ const fourthlocalStorageValue = localStorage.getItem('fourthInput')
 })
 firstInput.addEventListener('input',()=>{
   localStorage.setItem('firstInput',firstInput.value)
-  console.log(firstInput.value);
 })
 
 secondInput.addEventListener('input',()=>{
   localStorage.setItem('secondInput',secondInput.value)
-  console.log(secondInput.value);
 })
 
 thirdInput.addEventListener('input',()=>{
   localStorage.setItem('thirdInput',thirdInput.value)
-  console.log(thirdInput.value);
 })
 
 fourthInput.addEventListener('input',()=>{
   localStorage.setItem('fourthInput',fourthInput.value)
-  console.log(fourthInput.value);
 })
