@@ -57,7 +57,7 @@ input[type="text"] {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
   text-align: center;
 }
