@@ -5,6 +5,7 @@ This is a simple **Todo Website** built using frontend technologies.
 > ⚠️ This is my **second and last frontend project**—I don't really like frontend development. I prefer backend work.
 
 ---
+![Screenshot](./todo.png)
 
 ## 📌 Features
 
